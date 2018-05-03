@@ -1,0 +1,28 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="row">
+  <div class="col-sm-4">
+    <form action="<%= chapter_path(@chapter.id) %>" method="get">
+      <%= text_field_tag :name, params[:name] %>
+      <%= submit_tag 'Name Filter', class: 'btn btn-default' %>
+    </form>
+  </div>
+  <div class="col-sm-1 col-sm-offset-3">
+    <%= link_to new_chapter_topic_path(@chapter.id), class: 'btn btn-default', role: 'button' do %>
+      <span class="glyphicon glyphicon-plus"></span> New Topic
+    <% end%>
+  </div>
+  <div class="col-sm-4">
+    <div class="digg_pagination">
+      <div class="page_info">
+        <%= page_entries_info @topics %>
+      </div>
+      <%= will_paginate @topics, :container => false, renderer: BootstrapPagination::Rails %>
+    </div>
+  </div>
+</div>
+  <%= render 'chapter_table', chapter: @chapter, topics: @topics %>
+  <%= link_to 'Back', sections_path %>
+</div>
+
+

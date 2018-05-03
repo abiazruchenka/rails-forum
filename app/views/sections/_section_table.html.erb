@@ -1,0 +1,38 @@
+<div class="forum-section">
+  <table class="table">
+    <thead class="forum-title">
+    <tr>
+      <th class="col-sm-7">
+        <%= link_to section.title, section, class: 'forum-title' %>
+        <% if user_admin? %>
+          | <%= link_to 'Edit', edit_section_path(section), data: { confirm: 'Are you sure?' }, class: 'forum-title' %>
+          | <%= link_to 'Delete', section, method: :delete, data: { confirm: 'Are you sure?' }, class: 'forum-title' %>
+        <% end %>
+      </th>
+      <th class="col-sm-1">Topics</th>
+      <th class="col-sm-1">Posts</th>
+      <th class="col-sm-3">Last post</th>
+    </tr>
+    </thead>
+    <tbody class="forum-section-white">
+      <% section.chapters.each do |chapter| %>
+        <tr>
+          <td class="col-sm-7">
+            <%= link_to chapter.title, chapter, class: 'chapter-head' %>
+            <div class="chapter-description"><%= chapter.description %></div>
+          </td>
+          <td class="col-sm-1"><%= chapter.topics_count %></td>
+          <td class="col-sm-1"><%= chapter.posts %></td>
+          <td class="col-sm-3">
+            <% last_post = chapter.last_post%>
+            <div class="full-place">
+              <%= link_to last_post[:topic_title], chapter_topic_path(chapter, last_post[:topic].id) if last_post[:topic]%>
+            </div>
+            <div class="full-place"><%=last_post[:message]%></div>
+            <div class="full-place"><%= link_to last_post[:user_name], last_post[:user] if last_post[:user]%></div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

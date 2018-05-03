@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="digg_pagination">
+    <div class="page_info">
+      <%= page_entries_info @users %>
+    </div>
+    <%= will_paginate @users, :container => false, renderer: BootstrapPagination::Rails %>
+  </div>
+  <div class="forum-section">
+    <table class="table">
+      <thead class="forum-title">
+      <tr>
+        <th class="col-sm-4">Username
+          <% if user_admin? %>
+            | <%= link_to 'New User', new_user_path, class: 'forum-title' %>
+          <% end%>
+        </th>
+        <th>Group</th>
+        <th>Registered</th>
+        <th>Email</th>
+      </tr>
+      </thead>
+      <tbody class="forum-section-white">
+      <% @users.each do |user| %>
+        <tr>
+          <td class="col-sm-4"><%= link_to user.user_name, user %></td>
+          <td><%= user.group %></td>
+          <td><%= user.registered %></td>
+          <td><%= user.email %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <%= link_to 'Back', sections_path %>
+</div>

@@ -1,0 +1,23 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-sm-4">
+      <form action="<%= messages_path %>" method="get">
+        <div class="form-group col-md-6">
+          <%= select_tag(:chapter_id, options_for_select(chapters.collect{ |p| [p.title, p.id] }, chapter),
+                         include_blank: 'All', onchange: "this.form.submit();", class: 'form-control') %>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-4 col-sm-offset-4">
+      <div class="digg_pagination">
+        <div class="page_info">
+          <%= page_entries_info topics %>
+        </div>
+        <%= will_paginate topics, :container => false, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
+  <%= render 'messages/topics_table', topics: topics %>
+  <%= link_to 'Back', sections_path %>
+</div>

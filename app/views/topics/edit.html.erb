@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="forum-section">
+    <div class="forum-title">
+      <h1>Editing Topic</h1>
+    </div>
+    <div class="forum-section-white">
+      <%= render 'form', topic: @topic, chapter: @chapter, message: @message %>
+    </div>
+  </div>
+
+  <%= link_to 'Back', chapter_topic_path(@chapter.id, @topic.id) %>
+</div>

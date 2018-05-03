@@ -1,0 +1,42 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to 'Rails Forum', root_path, class: 'navbar-brand' %>
+    </div>
+    <% if user_signed_in? %>
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Users', users_path %></li>
+        <% if user_admin? %>
+          <li><%= link_to 'Administrating', admins_index_path %></li>
+        <% end %>
+        <li><%= link_to 'Last messages', messages_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= link_to current_user do %>
+            <span class="glyphicon glyphicon-user"></span> Profile
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <span class="glyphicon glyphicon-log-out"></span> Logout
+          <% end %>
+        </li>
+      </ul>
+    <%else%>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= link_to new_user_registration_path do %>
+            <span class="glyphicon glyphicon-user"></span> Sign Up
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_user_session_path do %>
+            <span class="glyphicon glyphicon-log-in"></span> Login
+          <% end %>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+</nav>
+

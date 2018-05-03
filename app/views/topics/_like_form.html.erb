@@ -1,0 +1,8 @@
+<%= form_for @like, remote: true, html: { :id => "new_like_#{message.id}" } do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :message_id, value: message.id %>
+    <%= f.hidden_field :author_id, value: message.author.id %>
+  <%= f.button :submit do %>
+    <span class="glyphicon glyphicon-thumbs-up"></span> Like
+  <% end %>
+<% end %>

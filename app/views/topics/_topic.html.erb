@@ -1,0 +1,13 @@
+<tr>
+  <td class="col-sm-7">
+    <%= link_to topic.title, chapter_topic_path(topic.chapter_id, topic), class: 'chapter-head' %>
+    <div class="chapter-description"><%= topic.description %></div>
+  </td>
+  <td class="col-sm-1"><%= topic.answers %></td>
+  <td class="col-sm-2"><%= link_to topic.topic_author.user_name, topic.topic_author %></td>
+  <td class="col-sm-2">
+    <% last_post = topic.last_post%>
+    <%=last_post[:message]%>
+    <%= link_to last_post[:user_name], last_post[:user] if last_post[:user]%>
+  </td>
+</tr>

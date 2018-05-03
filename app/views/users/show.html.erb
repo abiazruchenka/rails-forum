@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-sm-8 col-md-4">
+      <div class="forum-section">
+        <div class="forum-title">
+          Profile
+          <% if current_user.id.equal?(@user.id)%>
+            | <%= link_to 'Edit', edit_user_registration_path, class: 'forum-title' %>
+          <% elsif user_admin?%>
+            | <%= link_to 'Edit', edit_user_path, data: { confirm: 'Are you sure?' }, class: 'forum-title' %>
+            | <%= link_to 'Delete User', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: 'forum-title' %>
+          <% end %>
+        </div>
+        <div class="forum-section-white">
+          <div class="panel-body">
+            <div class="col-md-12 centered">
+              <%= image_tag @user.avatar.url(:medium)%>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <%= label_tag t('devise.passwords.user_name', default: 'User name') %><br />
+            </div>
+            <div class="col-md-6">
+              <%= @user.user_name%>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <%= label_tag t('devise.passwords.first_name', default: 'First name') %>
+            </div>
+            <div class="col-md-6">
+              <%= @user.first_name %>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <%= label_tag t('devise.passwords.last_name', default: 'Last name') %>
+            </div>
+            <div class="col-md-6">
+              <%= @user.last_name %>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <%= label_tag t('devise.passwords.gender', default: 'Gender') %><br />
+            </div>
+            <div class="col-md-6">
+              <%= @user.gender %>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <%= label_tag :email %>
+            </div>
+            <div class="col-md-6">
+              <%= @user.email %>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <%= label_tag t('devise.passwords.address', default: 'Address') %><br />
+            </div>
+            <div class="col-md-6">
+              <%= @user.address %>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <%= label_tag t('devise.passwords.birth_date', default: 'Birthdate') %><br />
+            </div>
+            <div class="col-md-6">
+              <%= @user.birthdate %>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <%= label_tag :messages %><br />
+            </div>
+            <div class="col-md-6">
+              <%= @user.all_by_author %>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="col-md-6">
+              <%= label_tag :likes %><br />
+            </div>
+            <div class="col-md-6">
+              <%= @user.likes_count %>
+            </div>
+          </div>
+          <div class="panel-body panel-body-bottom">
+            <div class="col-md-6">
+              <%= label_tag t('devise.passwords.registered_at', default: 'Registered at') %><br />
+            </div>
+            <div class="col-md-6">
+              <%= @user.registered %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <%= render 'messages/all_topics', topics: @topics, chapter: @chapter, chapters: @chapters %>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,17 @@
+<%= form_with(model: section, local: true) do |form| %>
+  <div class="form-group">
+    <%= form.label :section_title, class: 'forum-title' %>
+    <%= form.text_field :title, class: 'form-control-half' %>
+    <%= form.submit class: 'btn btn-danger'%>
+  </div>
+  <% if section.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(section.errors.count, "error") %> prohibited this section from being saved:</h2>
+      <ul>
+        <% section.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,3 @@
+$("#new_like_<%=@id%>").hide();
+var likes = parseInt($("#message-<%=@id%>").text());
+$("#message-<%=@id%>").text(likes + 1);

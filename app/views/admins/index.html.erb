@@ -1,0 +1,15 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <% @sections.each do |section| %>
+    <%= render 'sections/section_table', section: section %>
+  <% end %>
+
+  <div class="forum-section">
+    <div class="panel-body">
+      <%= render 'sections/form', section: @section %>
+      <div class="forum-section-white">
+        <%= render 'chapters/form', chapter: @chapter, sections: @sections %>
+      </div>
+    </div>
+  </div>
+</div>

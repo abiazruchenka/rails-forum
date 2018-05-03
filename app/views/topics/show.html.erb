@@ -1,0 +1,39 @@
+<%= javascript_include_tag 'topics/quotes' %>
+
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <form action="<%= chapter_topic_path(@chapter, @topic) %>" method="get">
+    <%= text_field_tag :text, params[:text] %>
+    <%= submit_tag 'Find message with...', class: 'btn btn-default' %>
+  </form>
+  <div class="digg_pagination">
+    <div class="page_info">
+      <%= page_entries_info @messages %>
+    </div>
+    <%= will_paginate @messages, :container => false, renderer: BootstrapPagination::Rails %>
+  </div>
+  <div class="forum-section">
+    <div class="forum-title"><%=@topic.title%>
+    <% if @topic.editable?(current_user)%>
+      | <%= link_to 'Edit Topic', edit_chapter_topic_path(@chapter, @topic), data: { confirm: 'Are you sure?' }, class: 'forum-title' %>
+      | <%= link_to 'Delete Topic', chapter_topic_path(@chapter, @topic), method: :delete, data: { confirm: 'Are you sure?' }, class: 'forum-title' %>
+    <% end %>
+    </div>
+  </div>
+  <% @messages.each do |message| %>
+    <%= render 'message', message: message, editable: @topic.editable?(current_user)%>
+  <% end %>
+  <div class="digg_pagination">
+    <div class="page_info">
+      <%= page_entries_info @messages %>
+    </div>
+    <%= will_paginate @messages, :container => false, renderer: BootstrapPagination::Rails %>
+  </div>
+  <div class="forum-section">
+    <div class="forum-title">Answer</div>
+    <div class="forum-section-white">
+      <%= render 'message_form', topic: @topic, chapter: @chapter, message: @message %>
+    </div>
+  </div>
+  <%= link_to 'Back', chapter_path(@chapter) %>
+</div>

@@ -1,0 +1,18 @@
+<div class="forum-section">
+  <table class="table">
+    <thead class="forum-title">
+    <tr>
+      <th class="col-sm-7">
+      </th>
+      <th class="col-sm-1">Answers</th>
+      <th class="col-sm-2">Autor</th>
+      <th class="col-sm-2">Last post</th>
+    </tr>
+    </thead>
+    <tbody class="forum-section-white">
+    <% topics.each do |topic| %>
+        <%= render 'topics/topic', topic: topic %>
+    <% end %>
+    </tbody>
+  </table>
+</div>

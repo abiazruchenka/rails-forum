@@ -1,0 +1,23 @@
+<div class="forum-section">
+  <table class="table">
+    <thead class="forum-title">
+    <tr>
+      <th class="col-sm-7">
+        <%= link_to chapter.title, chapter, class: 'forum-title' %>
+        <% if user_admin? %>
+          | <%= link_to 'Edit', edit_chapter_path(chapter), data: { confirm: 'Are you sure?' }, class: 'forum-title' %>
+          | <%= link_to 'Delete', chapter, method: :delete, data: { confirm: 'Are you sure?' }, class: 'forum-title' %>
+        <% end %>
+      </th>
+      <th class="col-sm-1">Answers</th>
+      <th class="col-sm-2">Autor</th>
+      <th class="col-sm-2">Last post</th>
+    </tr>
+    </thead>
+    <tbody class="forum-section-white">
+      <% topics.each do |topic| %>
+        <%= render 'topics/topic', topic: topic %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

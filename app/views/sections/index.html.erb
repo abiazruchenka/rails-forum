@@ -1,0 +1,7 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <% @sections.each do |section| %>
+      <%= render 'section_table', section: section %>
+  <% end %>
+</div>
+

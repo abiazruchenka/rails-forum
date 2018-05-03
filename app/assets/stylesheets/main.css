@@ -1,0 +1,88 @@
+.forum-section {
+    background-color: #0076b1;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
+    margin: 10px 0;
+    padding: 0.01em 16px;
+    border-radius: 4px;
+}
+
+.forum-title {
+    font-weight: bold;
+    color: #fff;
+    font-size: 16px;
+}
+
+.forum-section-white {
+    background-color: #fff;
+    color: #000;
+}
+
+.form-control-half {
+    width: 33%;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.birth {
+    display: inline !important;
+    width: 32% !important;
+}
+
+.padd-left-23 {
+   padding-left: 23px;
+}
+
+.padd-left-0 {
+    padding-left: 0px;
+}
+
+.centered {
+    text-align: center;
+}
+
+.pagination {
+    margin: 5px 0 !important;
+}
+
+.digg_pagination{
+    text-align: right;
+}
+
+.panel-body-chapter {
+    margin-bottom: 15px;
+    padding: 15px;
+}
+
+.chapter-head {
+    position: static;
+    float: none;
+    display: table-cell;
+    width: 100%;
+    font-weight: bold;
+}
+
+.panel-body-bottom {
+    margin-bottom: 15px;
+}
+
+.chapter-description {
+    color: gray;
+    font-size: 12px;
+}
+
+trix-editor {
+    min-height: 20em; !important;
+}
+
+.full-place {
+    width: 100%;
+}
+
+.updated {
+    color:  red;
+    font-weight: bold;
+}
+
