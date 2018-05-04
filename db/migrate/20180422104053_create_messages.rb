@@ -10,7 +10,4 @@ class CreateMessages < ActiveRecord::Migration[5.1]
       t.timestamps
     end
   end
-
-  add_index :text
-  add_index :topic
 end
