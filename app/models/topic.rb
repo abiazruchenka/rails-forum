@@ -25,7 +25,7 @@ class Topic < ApplicationRecord
   end
 
   def editable?(current_user)
-    (self.answers == 0 && current_user.id.equal?(self.user_id)) || current_user.try(:admin)
+    (self.answers == 0 && current_user.try(:id).equal?(self.user_id)) || current_user.try(:admin)
   end
 
   private
