@@ -7,8 +7,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
 
-  PAGINATION_LIMIT = 10
-  MESSAGE_PAGINATION_LIMIT = 3
+  PAGINATION_LIMIT = 10.freeze
+  MESSAGE_PAGINATION_LIMIT = 3.freeze
 
   def index
     @users = User.order(user_name: :asc).paginate(page: params[:page], per_page: PAGINATION_LIMIT)

@@ -69,7 +69,7 @@ class SectionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def section_params
       first_section_params = params.fetch(:section, {})
-      second_section_params = {user_id: current_user.id, status: Constants::STATUS }
+      second_section_params = {user_id: current_user.id, status: Constant::STATUS }
       first_section_params.merge(second_section_params).permit!
     end
 end

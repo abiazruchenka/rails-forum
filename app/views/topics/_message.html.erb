@@ -32,7 +32,7 @@
         <button type="button" class="btn btn-default quotes">Quotes</button>
       </td>
     </tr>
-    <% if message.status != Constants::STATUS %>
+    <% if message.status != Constant::STATUS %>
         <tr>
           <td></td>
           <td class="updated"><%= message.status %><%= message.updated %></td>

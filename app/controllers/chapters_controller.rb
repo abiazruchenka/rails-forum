@@ -5,7 +5,7 @@ class ChaptersController < ApplicationController
   before_action :authenticate_admin, only:[:edit, :update, :destroy]
   before_action :set_chapter, only: [:show, :edit, :update, :destroy]
 
-  PAGINATION_LIMIT = 2
+  PAGINATION_LIMIT = 10.freeze
 
   def show
     topics = @chapter.topics
@@ -70,7 +70,7 @@ class ChaptersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def chapter_params
       first_chapter_params = params.fetch(:chapter, {})
-      second_chapter_params = {user_id: current_user.id, status: Constants::STATUS }
+      second_chapter_params = {user_id: current_user.id, status: Constant::STATUS }
       first_chapter_params.merge(second_chapter_params).permit!
     end
 

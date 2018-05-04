@@ -6,7 +6,7 @@ class TopicsController < ApplicationController
   before_action :only_topic_fetch, only: [:create, :update]
 
 
-  PAGINATION_LIMIT = 10
+  PAGINATION_LIMIT = 10.freeze
 
   # GET /topics
   # GET /topics.json
@@ -86,13 +86,13 @@ class TopicsController < ApplicationController
     end
 
     def internal_topic_params
-      {chapter_id: current_chapter, user_id: current_user.id, status: Constants::STATUS }
+      {chapter_id: current_chapter, user_id: current_user.id, status: Constant::STATUS }
     end
 
     def message_params
       external_message_params = @topic_params.fetch(:message, {})
       internal_message_params = {topic_id: @topic.id, chapter_id: current_chapter,
-                                 user_id: current_user.id, status: Constants::STATUS, order: 1}
+                                 user_id: current_user.id, status: Constant::STATUS, order: 1}
       external_message_params.merge(internal_message_params).permit!
     end
 

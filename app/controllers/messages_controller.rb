@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
   before_action :update_text, only: [:update]
   before_action :set_message, only: [:edit, :update, :destroy]
 
-  PAGINATION_LIMIT = 10
+  PAGINATION_LIMIT = 10.freeze
 
   def index
     @chapters = Chapter.all
@@ -73,7 +73,7 @@ class MessagesController < ApplicationController
   end
 
   def only_message_fetch
-    @status = Constants::STATUS
+    @status = Constant::STATUS
     @message_params = params.fetch(:message, {})
   end
 
