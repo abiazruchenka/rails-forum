@@ -10,7 +10,8 @@ class MessagesController < ApplicationController
   def index
     @chapters = Chapter.all
     @chapter = params[:chapter_id]
-    topics = Topic.where(user_id: params[:id]).all
+    topics = Topic.all
+    topics = topics.where(user_id: params[:id]) if params[:id]
     topics = topics.where(chapter_id: params[:chapter_id]) if @chapter && @chapter.present?
     @topics = topics.order(updated_at: :desc).paginate(page: params[:page], per_page: PAGINATION_LIMIT)
   end
