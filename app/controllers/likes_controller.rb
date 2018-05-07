@@ -5,7 +5,7 @@ class LikesController < ApplicationController
     @id = like_params[:message_id]
     respond_to do |f|
       f.html { redirect_to likes_url }
-      f.js
+      f.js #?
     end
   end
 

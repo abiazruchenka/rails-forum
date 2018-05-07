@@ -18,6 +18,7 @@ class TopicsController < ApplicationController
     @message = Message.new()
     @like = Like.new()
     messages = @topic.messages
+    # Снова ActiveRecord. Плюс я видел уже этот код, за небольшим изменением в chapters_controller
     messages = messages.where('text like ?', "%#{params[:text]}%") if params[:text]
     @messages = messages.order(created_at: :asc).paginate(page: params[:page], per_page: PAGINATION_LIMIT)
   end

@@ -8,10 +8,11 @@ class MessagesController < ApplicationController
   PAGINATION_LIMIT = 10.freeze
 
   def index
+    # Снова слишком много знающий контроллер и ActiveRecord в нем. Где named scopes?
     @chapters = Chapter.all
     @chapter = params[:chapter_id]
     topics = Topic.all
-    topics = topics.where(user_id: params[:id]) if params[:id]
+    topics = topics.where(user_id: params[:id]) if params[:id] # :id должен быть всегда, он часть пути.
     topics = topics.where(chapter_id: params[:chapter_id]) if @chapter && @chapter.present?
     @topics = topics.order(updated_at: :desc).paginate(page: params[:page], per_page: PAGINATION_LIMIT)
   end
@@ -86,6 +87,7 @@ class MessagesController < ApplicationController
     @status = "updated by #{current_user.user_name} at"
   end
 
+  # Префих set путает. Метод по сути getter, а префикс от setter-a. Лучше current_topic.
   def set_topic
     @topic = Topic.find(@message.topic_id)
   end

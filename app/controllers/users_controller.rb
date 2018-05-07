@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def show
     @chapters = Chapter.all
     @chapter = params[:chapter_id]
+    # Опять
     topics = Topic.joins(:messages).where(messages:{user_id: @user.id}).distinct
     topics = topics.where(chapter_id: params[:chapter_id]) if @chapter && @chapter.present?
     @topics = topics.order(updated_at: :desc).paginate(page: params[:page], per_page: MESSAGE_PAGINATION_LIMIT)
