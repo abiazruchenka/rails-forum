@@ -4,6 +4,7 @@ class Topic < ApplicationRecord
 
   accepts_nested_attributes_for :messages
 
+  # Снова имя и какая-то магия
   def answers
     topic_id = self.id
     all_messages = messages_by_topic_id(topic_id).count
@@ -14,6 +15,7 @@ class Topic < ApplicationRecord
     user_by_id(self.user_id)
   end
 
+  # Очень напоминает такой же код из chapter.rb
   def last_post
     last_message = last_topic_message
     last_post_info = {message: last_message.try(:posted)}
@@ -24,6 +26,7 @@ class Topic < ApplicationRecord
     return last_post_info
   end
 
+  # Это должно быть в ability
   def editable?(current_user)
     (self.answers == 0 && current_user.try(:id).equal?(self.user_id)) || current_user.try(:admin)
   end

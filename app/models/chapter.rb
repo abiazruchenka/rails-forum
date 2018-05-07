@@ -1,14 +1,17 @@
 class Chapter < ApplicationRecord
   has_many :topics, dependent: :destroy
 
+  # О! А вот и ассоциация :)
   def topics_count
     self.topics.count
   end
 
+  # Снова ошибка в наименовании
   def posts
     messages.count
   end
 
+  # Строго в сервис. Этот метод и все его зависимости. Модель не должна знать так много о других моделях
   def last_post
     last_message = last_chapter_message
     last_post_info = {message: last_message.try(:posted)}
@@ -27,10 +30,12 @@ class Chapter < ApplicationRecord
 
   private
 
+  # User.find_by(id: user_id). Зачем свой метод?
   def user_by_id(user_id)
     User.find(user_id)
   end
 
+  # Ассоциация?
   def messages
     Message.where(chapter_id: self.id)
   end

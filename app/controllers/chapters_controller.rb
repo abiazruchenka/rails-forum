@@ -9,6 +9,8 @@ class ChaptersController < ApplicationController
 
   def show
     topics = @chapter.topics
+    # ActiveRecord в не должен просачиваться на уровень контролеера. Для этого есть named scopes.
+    # Кроме того весь этот код неплохо смотрелся бы в сервисе.
     topics = topics.where('title like ?', "%#{params[:name]}%") if params[:name]
     @topics = topics.order(created_at: :desc).paginate(page: params[:page], per_page: PAGINATION_LIMIT)
   end
@@ -23,6 +25,11 @@ class ChaptersController < ApplicationController
 
   # POST /chapters
   # POST /chapters.json
+
+  # Я не совсем понимая зачем здесь ответ на два формата (html и json). В коде я нашел только обращения по html.
+  # Как API это не сойдет, потому что:
+  # * Нужна живая сессия для запроса
+  # * API должно лежать в своем контроллере на другом роуте с версионированием. /api/v1/chapters_controller.rb
   def create
     @chapter = Chapter.new(chapter_params)
 
