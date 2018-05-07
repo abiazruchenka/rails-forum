@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-8 col-sm-8 col-md-4">
+    <div class="col-xs-12 col-sm-6 col-md-5">
       <div class="forum-section">
         <div class="forum-title">
           Profile
@@ -18,82 +18,82 @@
             </div>
           </div>
           <div class="col-md-12">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <%= label_tag t('devise.passwords.user_name', default: 'User name') %><br />
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
               <%= @user.user_name%>
             </div>
           </div>
           <div class="col-md-12">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <%= label_tag t('devise.passwords.first_name', default: 'First name') %>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
               <%= @user.first_name %>
             </div>
           </div>
           <div class="col-md-12">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <%= label_tag t('devise.passwords.last_name', default: 'Last name') %>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
               <%= @user.last_name %>
             </div>
           </div>
           <div class="col-md-12">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <%= label_tag t('devise.passwords.gender', default: 'Gender') %><br />
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
               <%= @user.gender %>
             </div>
           </div>
           <div class="col-md-12">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <%= label_tag :email %>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
               <%= @user.email %>
             </div>
           </div>
           <div class="col-md-12">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <%= label_tag t('devise.passwords.address', default: 'Address') %><br />
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
               <%= @user.address %>
             </div>
           </div>
           <div class="col-md-12">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <%= label_tag t('devise.passwords.birth_date', default: 'Birthdate') %><br />
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
               <%= @user.birthdate %>
             </div>
           </div>
           <div class="col-md-12">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <%= label_tag :messages %><br />
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
               <%= @user.all_by_author %>
             </div>
           </div>
           <div class="col-md-12">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <%= label_tag :likes %><br />
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
               <%= @user.likes_count %>
             </div>
           </div>
           <div class="panel-body panel-body-bottom">
-            <div class="col-md-6">
+            <div class="col-md-4">
               <%= label_tag t('devise.passwords.registered_at', default: 'Registered at') %><br />
             </div>
-            <div class="col-md-6">
+            <div class="col-md-8">
               <%= @user.registered %>
             </div>
           </div>
